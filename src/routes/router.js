@@ -8,9 +8,9 @@ export default function Routes() {
 
     const PrivateRoute = ({ component: Component, ...rest }) => (
         <Route {...rest} render={(props) => (
-            token !== 'null'
-            ? <Component {...props} />
-            : <Redirect to='/login' />
+            (token === null || token === 'null')
+            ? <Redirect to='/login' />
+            : <Component {...props} />
         )} />
       )
 

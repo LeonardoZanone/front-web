@@ -3,7 +3,7 @@ import './layouts.css';
 import logo from '../../assets/facens.png'
 import profilePic from '../../assets/person.png';
 
-export default function Home() {
+export default function Home({history}) {
     const [people, setPeople] = useState([]);
 
     useEffect(() =>
@@ -20,10 +20,15 @@ export default function Home() {
             },
         ]), []);
 
+    function handleLogout() {
+        localStorage.setItem('token', null);
+        history.push('/login');
+    }  
+
     return (
         <div className="grid-container">
             <div className="Logo">
-                <img src={logo}></img>
+                <img alt='Facens Logo' src={logo}></img>
             </div>
             <div className="NavBar">
                 <div className="NavItem">
@@ -46,13 +51,13 @@ export default function Home() {
                 </div>
             </div>
             <div className="Header">
-                <div className="Logout"><button>Logout</button></div>
+                <div className="Logout"><button onClick={handleLogout}>Logout</button></div>
             </div>
             <div className="Body">
                 {people.map((person) =>
                     <div key={person.Id} id={person.Id} className="Card">
                         <div className="Pic">
-                            <img src={profilePic}></img>
+                            <img alt='Profile' src={profilePic}></img>
                         </div>
                         <div className="Info">
                             <p>{person.Name + ' ' + person.Sobrenome}</p>
