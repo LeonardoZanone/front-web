@@ -4,16 +4,21 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: "Logo Logo Header Header Header Header Header Header Header Header Header" "Logo Logo Header Header Header Header Header Header Header Header Header" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body";
+    grid-template-areas: "Logo Logo Header Header Header Header Header Header Header Header Header" "Logo Logo Header Header Header Header Header Header Header Header Header" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body" "NavBar NavBar Body Body Body Body Body Body Body Body Body";
+
 }
 
 .Logo {
     grid-area: Logo;
+    background: #ffffff;
+    z-index: 1;
 }
 
 .Logo > img {
     background: no-repeat;
     background-size: contain;
-    height: 100%;
+    /* height: 60%; */
+    width: 100%;
 }
 
 .NavBar {
@@ -30,20 +35,21 @@
     height: 100%;
     background-color: #00437f;
     color: aliceblue;
-    border: black solid 1px;
+    border: none; /* black solid 1px; */
     cursor: pointer;
 }
 
 .NavBar div button:hover {
-    background-color: #020273;
+    background-color: rgb(0, 91, 189);
 }
 
 .Header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: ". . . . . . . Logout" ". . . . . . . .";
+    grid-template-areas: ". . . . . . . Logout" ". . . . . . . Logout";
     grid-area: Header;
+    background: #ffffff
 }
 
 .Logout {
@@ -53,7 +59,7 @@
 .Logout > button {
     height: 100%;
     width: 100%;
-    color: white;
+    color: #020273;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -64,13 +70,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-gap: 5px;
+    /* grid-gap: 5px; */
     grid-area: Body;
+    background: #4D5057;
 }
 
 .Card {
-    border-radius: 20px; 
-    background: white;
+    /* border-radius: 20px;  */
+    margin-top: 10px;
+    margin-left: 10px;
+    background: #FFEAEE;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

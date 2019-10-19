@@ -10,14 +10,93 @@ export default function Home() {
         setPeople([
             {
                 Id: 1,
-                Name: 'Aff',
-                Sobrenome: 'Fonso',
+                Name: 'Affonso Brian',
+                Sobrenome: 'Pereira Azevedo',
             },
             {
                 Id: 2,
-                Name: 'Leo',
-                Sobrenome: 'Danone',
+                Name: 'Leonardo',
+                Sobrenome: 'Zanone',
             },
+            {
+                Id: 1,
+                Name: 'Lucas Senne',
+                Sobrenome: 'Moura Leite',
+            },
+            {
+                Id: 1,
+                Name: 'André',
+                Sobrenome: 'Breda',
+            },
+            {
+                Id: 1,
+                Name: 'Glauco',
+                Sobrenome: 'Todesco',
+            },
+            {
+                Id: 1,
+                Name: 'Ana',
+                Sobrenome: 'Luisa',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },{
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            },
+            {
+                Id: 1,
+                Name: 'João',
+                Sobrenome: 'Vitor',
+            }
         ]), []);
 
     return (
@@ -27,19 +106,19 @@ export default function Home() {
             </div>
             <div className="NavBar">
                 <div className="NavItem">
-                    <button>Item1</button>
+                    <button>Cadastro de Pessoas</button>
                 </div>
                 <div className="NavItem">
-                    <button>Item1</button>
+                    <button>Cadastro de Patrimonio</button>
                 </div>
                 <div className="NavItem">
-                    <button>Item1</button>
+                    <button>Consulta de Pessoas</button>
                 </div>
                 <div className="NavItem">
-                    <button>Item1</button>
+                    <button>Consulta de Patrimonio</button>
                 </div>
                 <div className="NavItem">
-                    <button>Item1</button>
+                    <button>Cadastro de Usuário</button>
                 </div>
                 <div className="NavItem">
                     <button>Item1</button>
@@ -58,7 +137,7 @@ export default function Home() {
                             <p>{person.Name + ' ' + person.Sobrenome}</p>
                         </div>
                         <div className="SeeMore">
-                            <button>See More</button>
+                            <button>+ Informações</button>
                         </div>
                     </div>
                 )}
