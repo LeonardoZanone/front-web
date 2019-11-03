@@ -9,9 +9,9 @@ export default function Login({ history }) {
     //     message: 'hidden'
     // });
 
-    if(localStorage.getItem('token') !== 'null') {
-        history.push('/');
-    }
+    //if(localStorage.getItem('token') !== 'null') {
+    //    history.push('/login');
+    //}
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -49,7 +49,7 @@ export default function Login({ history }) {
                             <label htmlFor="password">Password</label>
                             <input required={true} placeholder="password" name="password" type="password" onChange={ ev => setPassword(ev.target.value) }/>
                             {error && <p className="errorMessage">{message}</p>}
-                            <button type="submit" className="sendBtn">Send</button>
+                            <button type="submit" className="sendBtn">Login</button>
                         </form>
                     </div>
                 </div>
