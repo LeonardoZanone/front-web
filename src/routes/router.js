@@ -12,14 +12,11 @@ import EditarEquipamento from '../pages/EditarEquipamento';
 import EditarPessoa from '../pages/EditarPessoa';
 
 
-
 export default function Routes() {
     const token = localStorage.getItem('token');
     const PrivateRoute = ({ component: Component, ...rest }) => (
         <Route {...rest} render={(props) => (
-            token !== 'null'
-            ? <Component {...props} />
-            : <Redirect to='/login' />
+            <Component {...props} />
         )} />
       )
 
