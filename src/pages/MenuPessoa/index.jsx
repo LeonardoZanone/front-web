@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
 import Menu from '../../components/Menu';
@@ -7,14 +7,14 @@ import PessoaHub from '../../components/PessoaHub';
 
 export default function MenuPessoa() {
     return (
-    <div id="layout">
-        <Menu></Menu>
-        <div id="main">
-            <Header titulo="HUB Pessoa"></Header>
-            <div className="content" id="content">
-                <PessoaHub></PessoaHub>
+        <div id="layout">
+            <Menu></Menu>
+            <div id="main">
+                <Header titulo="HUB Pessoa"></Header>
+                <div className="content" id="content">
+                    <PessoaHub></PessoaHub>
+                </div>
             </div>
         </div>
-    </div>
     );
 }

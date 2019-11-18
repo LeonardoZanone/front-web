@@ -1,10 +1,10 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
 import { Link } from 'react-router-dom';
 
-export default function ShowEquimanetoEmprestado(){
-    const [patrimonios, setPatrimonios] = useState([{"property_number": "846486213", "type": "Computer", "status": "fodido","service_tag": "44GE55GE9", "description": "Um computer bão demais sô", "email": "contato.affonsobrian@gmail.com", "rg": "15.13.12.12-8"}]);
+export default function ShowEquimanetoEmprestado() {
+    const [patrimonios, setPatrimonios] = useState([{ "property_number": "846486213", "type": "Computer", "status": "fodido", "service_tag": "44GE55GE9", "description": "Um computer bão demais sô", "email": "contato.affonsobrian@gmail.com", "rg": "15.13.12.12-8" }]);
     return (
         <div>
             <table className="pure-table">

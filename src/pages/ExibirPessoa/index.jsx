@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
 import Menu from '../../components/Menu';
