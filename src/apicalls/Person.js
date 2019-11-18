@@ -1,13 +1,7 @@
 import api from "./api";
 
-export async function create(FirstName, LastName, Email, RG, Telephone) {
-    const body = JSON.stringify({
-        FirstName,
-        LastName,
-        Email,
-        RG,
-        Telephone
-    });
+export async function create(person) {
+    const body = JSON.stringify(person);
 
     try {
         const response = await api.post('person', body);
@@ -15,5 +9,13 @@ export async function create(FirstName, LastName, Email, RG, Telephone) {
     } catch (e) {
         return e;
     }
-    // localStorage.setItem('responseMessage', response.data.Message);
+}
+
+export async function list() {
+    try {
+        const response = await api.get('person');
+        return response;
+    } catch (e) {
+        return e;
+    }
 }

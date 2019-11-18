@@ -1,5 +1,6 @@
+import React from 'react';
 import axios from 'axios';
-
+import { Redirect } from 'react-router-dom';
 
 const api = axios.create({
     baseURL: 'http://localhost:5000/api/',
@@ -22,6 +23,8 @@ api.interceptors.response.use((response) => {
 }, (error) => {
 
     if (error.response.status === 401) {
+        localStorage.setItem('token', null);
+        return <Redirect to='login'></Redirect>
         // remover token, redirecionar para login...
     }
 })

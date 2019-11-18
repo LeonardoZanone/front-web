@@ -18,22 +18,22 @@ export default function Routes() {
         <Route {...rest} render={(props) => (
             <Component {...props} />
         )} />
-      )
+    )
 
     return (
         <BrowserRouter>
             <Switch>
                 <PrivateRoute path='/login' component={Login} />
-                <PrivateRoute  path='/home' component={Home}/>
-                <PrivateRoute  path='/' exact component={Home}/>
-                <PrivateRoute  path='/menupessoa' component={MenuPessoa}/>
-                <PrivateRoute  path='/menuequipamento' component={MenuEquipamento}/>
-                <PrivateRoute  path='/cadastropessoa' component={CadastroPessoa}/>
-                <PrivateRoute  path='/editarpessoa' component={EditarPessoa}/>
-                <PrivateRoute  path='/cadastroequipamento' component={CadastroEquipamento}/>
-                <PrivateRoute  path='/editarequipamento' component={EditarEquipamento}/>
-                <PrivateRoute  path='/listagempessoa' component={ExibirPessoa}/>
-                <PrivateRoute  path='/listagemequipamento' component={ExibirEquipamento}/>
+                <PrivateRoute path='/home' component={Home} />
+                <PrivateRoute path='/' exact component={Home} />
+                <PrivateRoute path='/menupessoa' component={MenuPessoa} />
+                <PrivateRoute path='/menuequipamento' component={MenuEquipamento} />
+                <PrivateRoute path='/cadastropessoa' component={CadastroPessoa} />
+                <PrivateRoute path='/editarpessoa' component={EditarPessoa} />
+                <PrivateRoute path='/cadastroequipamento' component={CadastroEquipamento} />
+                <PrivateRoute path='/editarequipamento' component={EditarEquipamento} />
+                <PrivateRoute path='/listagempessoa' component={ExibirPessoa} />
+                <PrivateRoute path='/listagemequipamento' component={ExibirEquipamento} />
             </Switch>
         </BrowserRouter>
     )

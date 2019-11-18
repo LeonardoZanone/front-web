@@ -1,19 +1,37 @@
-import React, { Component, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
 import { Link } from 'react-router-dom';
+import { list } from '../../apicalls/Person'
 
 export default function ShowPessoa() {
-    const [pessoas, setPessoas] = useState([{"id": 1, "nome": "affonso", "sobrenome": "brian", "email": "contato.affonsobrian@gmail.com", "rg": "15.13.12.12-8"}]);
+
+    const [pessoas, setPessoas] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await list();
+            if (!response) {
+                alert('Ocorreu um erro!');
+                return;
+            }
+            if (response.status !== 200 || !response.data || response.data.Status !== 0) {
+                alert(response.data.Message);
+            }
+            setPessoas(response.data.Content);
+        }
+        fetchData();
+    }, []);
+
     return (
         <div>
             <table className="pure-table">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Sobrenome</th>
                         <th>Email</th>
                         <th>RG</th>
+                        <th>Telefone</th>
                         <th>Editar</th>
                         <th>Equipamentos</th>
                     </tr>
@@ -22,12 +40,12 @@ export default function ShowPessoa() {
                     {
                         pessoas.map(function (pessoa) {
                             return (
-                                <tr>
-                                    <td>{pessoa.nome}</td>
-                                    <td>{pessoa.sobrenome}</td>
-                                    <td>{pessoa.email}</td>
-                                    <td>{pessoa.rg}</td>
-                                    <td><Link to={`/editarpessoa/${pessoa.id}`}>Editar</Link></td>
+                                <tr key={pessoa.Id}>
+                                    <td>{pessoa.Name}</td>
+                                    <td>{pessoa.Email}</td>
+                                    <td>{pessoa.RG}</td>
+                                    <td>{pessoa.Telephone}</td>
+                                    <td><Link to={`/editarpessoa/${pessoa.Id}`}>Editar</Link></td>
                                     <td><Link to="#">Devolver</Link></td>
                                 </tr>
                             );
