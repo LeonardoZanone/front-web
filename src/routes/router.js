@@ -10,15 +10,20 @@ import MenuPessoa from '../pages/MenuPessoa';
 import MenuEquipamento from '../pages/MenuEquipamento';
 import EditarEquipamento from '../pages/EditarEquipamento';
 import EditarPessoa from '../pages/EditarPessoa';
+import Logout from '../components/Logout/index';
 
 
 export default function Routes() {
-    const token = localStorage.getItem('token');
+
+    function isLoggedIn() {
+        const token = localStorage.getItem('token');
+        return token ? true : false;
+    }
 
     const PrivateRoute = ({ component: Component, ...rest }) => {
         return (
             <Route {...rest} render={props => (
-                token ?
+                isLoggedIn() ?
                     <Component {...props} />
                     : <Redirect to="/login" />
             )} />
@@ -28,7 +33,7 @@ export default function Routes() {
     const PublicRoute = ({ component: Component, restricted, ...rest }) => {
         return (
             <Route {...rest} render={props => (
-                token && restricted ?
+                isLoggedIn() && restricted ?
                     <Redirect to="/home" />
                     : <Component {...props} />
             )} />
@@ -39,6 +44,7 @@ export default function Routes() {
         <BrowserRouter>
             <Switch>
                 <PublicRoute restricted={true} component={Login} path="/login" exact />
+                <PrivateRoute component={Logout} path="/logout" exact />
                 <PrivateRoute component={Home} path="/" exact />
                 <PrivateRoute component={Home} path="/home" />
                 <PrivateRoute path='/menupessoa' component={MenuPessoa} />
