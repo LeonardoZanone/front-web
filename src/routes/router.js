@@ -14,20 +14,33 @@ import EditarPessoa from '../pages/EditarPessoa';
 
 export default function Routes() {
     const token = localStorage.getItem('token');
-    const PrivateRoute = ({ component: Component, ...rest }) => (
-        <Route {...rest} render={(props) => (
-            token ?
-                <Component {...props} /> :
-                <Redirect to='login' />
-        )} />
-    )
+
+    const PrivateRoute = ({ component: Component, ...rest }) => {
+        return (
+            <Route {...rest} render={props => (
+                token ?
+                    <Component {...props} />
+                    : <Redirect to="/login" />
+            )} />
+        );
+    };
+
+    const PublicRoute = ({ component: Component, restricted, ...rest }) => {
+        return (
+            <Route {...rest} render={props => (
+                token && restricted ?
+                    <Redirect to="/home" />
+                    : <Component {...props} />
+            )} />
+        );
+    };
 
     return (
         <BrowserRouter>
             <Switch>
-                <PrivateRoute path='/login' component={Login} />
-                <PrivateRoute path='/home' component={Home} />
-                <PrivateRoute path='/' exact component={Home} />
+                <PublicRoute restricted={true} component={Login} path="/login" exact />
+                <PrivateRoute component={Home} path="/" exact />
+                <PrivateRoute component={Home} path="/home" />
                 <PrivateRoute path='/menupessoa' component={MenuPessoa} />
                 <PrivateRoute path='/menuequipamento' component={MenuEquipamento} />
                 <PrivateRoute path='/cadastropessoa' component={CadastroPessoa} />

@@ -5,7 +5,8 @@ export async function login(username, password) {
         username,
         password
     });
-    console.log(resposnse);
     localStorage.setItem('token', resposnse.data.Content);
     localStorage.setItem('responseMessage', resposnse.data.Message);
+
+    return resposnse.data.Content;
 }

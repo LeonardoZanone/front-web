@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
 import { Link } from 'react-router-dom';
+import { list } from '../../apicalls/Equipamento';
 
 export default function ShowEquimaneto() {
-    const [patrimonios] = useState([{ "id": 1, "property_number": "846486213", "type": "Computer", "status": "fodido", "service_tag": "44GE55GE9", "description": "Um computer bão demais sô", "email": "contato.affonsobrian@gmail.com", "rg": "15.13.12.12-8" }]);
+    const [patrimonios, setPatrimonios] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await list();
+            setPatrimonios(response.data.Content);
+        }
+        fetchData();
+    }, []);
+
     return (
         <div>
             <table className="pure-table">
