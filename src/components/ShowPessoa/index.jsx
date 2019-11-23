@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './styles.css';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
-import { list } from '../../apicalls/Person';
+import { list, deleta } from '../../apicalls/Person';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserTimes, faUserEdit, faLaptop } from '@fortawesome/free-solid-svg-icons'
+import ConfirmarDelecao from '../ConfirmarDelecao/index';
 
 export default function ShowPessoa() {
 
     const [pessoas, setPessoas] = useState([]);
+    const [hidden, setHidden] = useState('hidden');
+    const [selected, setSelected] = useState(0);
 
     useEffect(() => {
         async function fetchData() {
@@ -24,10 +27,28 @@ export default function ShowPessoa() {
             setPessoas(response.data.Content);
         }
         fetchData();
-    }, []);
+    }, [Delete]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    async function Delete() {
+        await deleta(selected);
+    }
+
+    function handleDelete(ev, id) {
+        ev.preventDefault();
+        setSelected(id);
+        setHidden('');
+    }
+
+    function deleteCallback(decision) {
+        if (decision)
+            Delete();
+        setHidden('hidden');
+    }
 
     return (
         <div>
+            <ConfirmarDelecao callback={deleteCallback} className={hidden} />
             <table className="pure-table">
                 <thead>
                     <tr>
@@ -52,7 +73,7 @@ export default function ShowPessoa() {
                                             <FontAwesomeIcon icon={faUserEdit} />
                                             <span className="tooltiptext">Editar</span>
                                         </Link>
-                                        <Link className='tooltip delete-icon' to={`/deletarpessoa/${pessoa.Id}`}>
+                                        <Link className='tooltip delete-icon' to='/' onClick={ev => handleDelete(ev, pessoa.Id)}>
                                             <FontAwesomeIcon icon={faUserTimes} />
                                             <span className="tooltiptext">Deletar</span>
                                         </Link>

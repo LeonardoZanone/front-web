@@ -28,3 +28,12 @@ export async function get(id) {
         return e;
     }
 }
+
+export async function deleta(id) {
+    try {
+        const response = await api.delete(`person/${id}`);
+        return response;
+    } catch (e) {
+        return e;
+    }
+}
