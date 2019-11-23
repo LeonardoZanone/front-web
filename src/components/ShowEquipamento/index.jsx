@@ -34,11 +34,11 @@ export default function ShowEquimaneto() {
                         patrimonios.map(function (patrimonio) {
                             return (
                                 <tr>
-                                    <td>{patrimonio.service_tag}</td>
-                                    <td>{patrimonio.property_number}</td>
-                                    <td>{patrimonio.type}</td>
-                                    <td>{patrimonio.status}</td>
-                                    <td>{patrimonio.description}</td>
+                                    <td>{patrimonio.ServiceTag}</td>
+                                    <td>{patrimonio.PropertyName}</td>
+                                    <td>{patrimonio.Type}</td>
+                                    <td>{patrimonio.Status}</td>
+                                    <td>{patrimonio.Description}</td>
                                     <td><Link to={`/editarequipamento/${patrimonio.id}`}>Editar</Link></td>
                                     <td><Link to="#">Emprestar</Link></td>
                                 </tr>

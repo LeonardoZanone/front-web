@@ -19,3 +19,12 @@ export async function list() {
         return e;
     }
 }
+
+export async function get(id) {
+    try {
+        const response = await api.get(`person/${id}`);
+        return response;
+    } catch (e) {
+        return e;
+    }
+}
