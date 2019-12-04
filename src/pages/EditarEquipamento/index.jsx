@@ -29,7 +29,7 @@ export default function EditarEquipamento({ history }) {
         <Menu />
         <div id="main">
             <Header titulo="Editar Equipamento"></Header>
-            <div className="content" id="content">
+            <div className="content content-body" id="content">
                 <FormEquipamento preEquipamento={equipamento}></FormEquipamento>
             </div>
         </div>

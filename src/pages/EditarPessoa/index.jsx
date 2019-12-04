@@ -30,7 +30,7 @@ export default function EditarPessoa({ history }) {
         <Menu></Menu>
         <div id="main">
             <Header titulo="Editar Pessoa"></Header>
-            <div className="content" id="content">
+            <div className="content content-body" id="content">
                 <FormPessoa prePerson={person}></FormPessoa>
             </div>
         </div>

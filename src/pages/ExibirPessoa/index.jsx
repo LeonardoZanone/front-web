@@ -10,7 +10,7 @@ export default function ExibirPessoa() {
         <Menu></Menu>
         <div id="main">
             <Header titulo="Listagem de Pessoa"></Header>
-            <div className="content" id="content">
+            <div className="content content-table" id="content">
                 <ShowPessoa></ShowPessoa>
             </div>
         </div>

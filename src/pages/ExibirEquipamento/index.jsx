@@ -18,7 +18,7 @@ export default function ExibirEquipamento({ history }) {
         <Menu></Menu>
         <div id="main">
             <Header titulo="Listagem de Equipamentos"></Header>
-            <div className="content" id="content">
+            <div className="content content-table" id="content">
                 <ShowEquimaneto person={person}></ShowEquimaneto>
             </div>
         </div>

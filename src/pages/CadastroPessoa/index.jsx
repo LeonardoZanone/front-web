@@ -10,7 +10,7 @@ export default function CadastroPessoa() {
         <Menu></Menu>
         <div id="main">
             <Header titulo="Cadastro de Pessoa"></Header>
-            <div className="content" id="content">
+            <div className="content content-body" id="content">
                 <FormPessoa></FormPessoa>
             </div>
         </div>

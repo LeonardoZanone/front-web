@@ -10,7 +10,7 @@ export default function MenuPessoa() {
         <div id="layout">
             <Menu></Menu>
             <div id="main">
-                <Header titulo="HUB Esquipamento"></Header>
+                <Header titulo="HUB Equipamento"></Header>
                 <div className="content" id="content">
                     <EquipamentoHub></EquipamentoHub>
                 </div>
