@@ -12,6 +12,7 @@ export default function Menu() {
                     <li className="pure-menu-item"><Link to='/home' className="pure-menu-link">Início</Link></li>
                     <li className="pure-menu-item"><Link to='/menupessoa' className="pure-menu-link">Pessoa</Link></li>
                     <li className="pure-menu-item"><Link to='/menuequipamento' className="pure-menu-link">Equipamento</Link></li>
+                    <li className="pure-menu-item"><Link to='/listagemhistorico' className="pure-menu-link">Histórico</Link></li>
                     <li className="pure-menu-item"><Link to='/logout' className="pure-menu-link">Logout</Link></li>
                 </ul>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
+import { success, error, warn } from '../../utils/message';
 import { create, edit, checkEmail } from '../../apicalls/Person';
 import ConfirmarPessoa from '../ConfirmarPessoa/index';
 
@@ -37,12 +38,28 @@ export default function FormPessoa({ prePerson }) {
 
     async function sendRequest() {
         const response = await create(person);
-        alert(response.data.Message);
+        if (response.data.Status === 0) {
+            success(response.data.Message);
+        }
+        else if (response.data.Status === 2) {
+            error(response.data.Message);
+        }
+        else {
+            warn(response.data.Message);
+        }
     }
 
     async function sendEditRequest() {
         const response = await edit(person);
-        alert(response.data.Message);
+        if (response.data.Status === 0) {
+            success(response.data.Message);
+        }
+        else if (response.data.Status === 2) {
+            error(response.data.Message);
+        }
+        else {
+            warn(response.data.Message);
+        }
     }
 
     async function checkemail() {

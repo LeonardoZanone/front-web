@@ -6,6 +6,7 @@ import CadastroPessoa from '../pages/CadastroPessoa';
 import CadastroEquipamento from '../pages/CadastroEquipamento';
 import ExibirPessoa from '../pages/ExibirPessoa';
 import ExibirEquipamento from '../pages/ExibirEquipamento';
+import ExibirHistorico from '../pages/ExibirHistorico';
 import MenuPessoa from '../pages/MenuPessoa';
 import MenuEquipamento from '../pages/MenuEquipamento';
 import EditarEquipamento from '../pages/EditarEquipamento';
@@ -55,6 +56,7 @@ export default function Routes() {
                 <PrivateRoute path='/editarequipamento' component={EditarEquipamento} />
                 <PrivateRoute path='/listagempessoa' component={ExibirPessoa} />
                 <PrivateRoute path='/listagemequipamento' component={ExibirEquipamento} />
+                <PrivateRoute path='/listagemhistorico' component={ExibirHistorico} />
             </Switch>
         </BrowserRouter>
     )

@@ -14,13 +14,6 @@ export default function EditarPessoa({ history }) {
         const id = items[items.length - 1];
         async function fetchData() {
             const response = await get(id);
-            if (!response) {
-                alert('Ocorreu um erro!');
-                return;
-            }
-            if (response.status !== 200 || !response.data || response.data.Status !== 0) {
-                alert(response.data.Message);
-            }
             setPerson(response.data.Content);
         }
         fetchData();

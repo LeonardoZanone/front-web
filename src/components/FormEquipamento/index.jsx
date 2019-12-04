@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
 import { create } from '../../apicalls/Equipamento';
+import { success, error, warn } from '../../utils/message';
 
 export default function FormEquipamento({ preEquipamento }) {
 
@@ -10,7 +11,8 @@ export default function FormEquipamento({ preEquipamento }) {
         PropertyNumber: '',
         Description: '',
         Status: '',
-        Type: ''
+        Type: '',
+        Active: true
     });
 
     useEffect(() => {
@@ -25,12 +27,18 @@ export default function FormEquipamento({ preEquipamento }) {
         setEquipamento(equipamento);
     }
 
-    async function criarEquipamento() {
+    async function criarEquipamento(e) {
+        e.preventDefault();
         const response = await create(equipamento);
-        if (!response || response.status !== 200) {
-            alert('Ocorreu um erro!');
+        if (response.data.Status === 0) {
+            success(response.data.Message);
         }
-        alert(response.data.Message);
+        else if (response.data.Status === 2) {
+            error(response.data.Message);
+        }
+        else {
+            warn(response.data.Message);
+        }
     }
 
     return (

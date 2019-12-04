@@ -3,6 +3,7 @@ import '../../css/pure-min.css';
 import '../../css/side-menu.css';
 import { Link } from 'react-router-dom';
 import { list, deleta } from '../../apicalls/Equipamento';
+import { success, error, warn } from '../../utils/message';
 import { borrow, devolver } from '../../apicalls/Action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit, faUserTag, faUndo } from '@fortawesome/free-solid-svg-icons';
@@ -30,8 +31,14 @@ export default function ShowEquimaneto({ person }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     async function Delete() {
         const response = await deleta(selected);
-        if (response.status === 200) {
-            alert(response.data.Message);
+        if (response.data.Status === 0) {
+            success(response.data.Message);
+        }
+        else if (response.data.Status === 2) {
+            error(response.data.Message);
+        }
+        else {
+            warn(response.data.Message);
         }
     }
 
@@ -51,7 +58,15 @@ export default function ShowEquimaneto({ person }) {
 
     async function Borrow(body) {
         const response = await borrow(body);
-        alert(response.data.Message);
+        if (response.data.Status === 0) {
+            success(response.data.Message);
+        }
+        else if (response.data.Status === 2) {
+            error(response.data.Message);
+        }
+        else {
+            warn(response.data.Message);
+        }
     }
 
     function handleBorrow(ev, id) {
@@ -86,7 +101,15 @@ export default function ShowEquimaneto({ person }) {
 
     async function Devolver(bodyReturn) {
         const response = await devolver(bodyReturn);
-        alert(response.data.Message);
+        if (response.data.Status === 0) {
+            success(response.data.Message);
+        }
+        else if (response.data.Status === 2) {
+            error(response.data.Message);
+        }
+        else {
+            warn(response.data.Message);
+        }
     }
 
     return (
@@ -98,7 +121,7 @@ export default function ShowEquimaneto({ person }) {
                 <thead>
                     <tr>
                         <th>Service Tag</th>
-                        <th>Numero de Patrimonio</th>
+                        <th>Nº de Patrimonio</th>
                         <th>Tipo</th>
                         <th>Status</th>
                         <th>Descrição</th>

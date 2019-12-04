@@ -17,13 +17,6 @@ export default function ShowPessoa() {
     useEffect(() => {
         async function fetchData() {
             const response = await list();
-            if (!response) {
-                alert('Ocorreu um erro!');
-                return;
-            }
-            if (response.status !== 200 || !response.data || response.data.Status !== 0) {
-                alert(response.data.Message);
-            }
             setPessoas(response.data.Content);
         }
         fetchData();
