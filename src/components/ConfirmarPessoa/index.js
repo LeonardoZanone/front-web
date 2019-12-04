@@ -12,9 +12,9 @@ export default function ConfirmarDelecao({ callback, className }) {
     }
 
     return (
-        <div className={'confirm-delete ' + className}>
-            Você tem certeza que deseja deletar este item?
-            <div className='buttons'>
+        <div className={'confirm-pessoa ' + className}>
+            Esse e-mail já existe porém está inativo, deseja reativá-lo com esses novos dados?
+            <div className='buttons'>]
                 <button className='button pure-button pure-button-secondary' onClick={ev => handleClick(ev, false)}>Cancelar</button>
                 <button className='button pure-button pure-button-primary' onClick={ev => handleClick(ev, true)}>Confirmar</button>
             </div>

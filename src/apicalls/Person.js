@@ -2,38 +2,26 @@ import api from "./api";
 
 export async function create(person) {
     const body = JSON.stringify(person);
+    return await api.post('person', body);
+}
 
-    try {
-        const response = await api.post('person', body);
-        return response;
-    } catch (e) {
-        return e;
-    }
+export async function edit(person) {
+    const body = JSON.stringify(person);
+    return await api.put('person', body);
 }
 
 export async function list() {
-    try {
-        const response = await api.get('person');
-        return response;
-    } catch (e) {
-        return e;
-    }
+    return await api.get('person');
 }
 
 export async function get(id) {
-    try {
-        const response = await api.get(`person/${id}`);
-        return response;
-    } catch (e) {
-        return e;
-    }
+    return await api.get(`person/${id}`);
 }
 
 export async function deleta(id) {
-    try {
-        const response = await api.delete(`person/${id}`);
-        return response;
-    } catch (e) {
-        return e;
-    }
+    return await api.delete(`person/${id}`);
+}
+
+export async function checkEmail(email) {
+    return await api.post('person/checkemail', JSON.stringify({ Email: email }));
 }

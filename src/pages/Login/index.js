@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Button from '../../components/simpleButton/index';
 import Home from '../../pages/Home/index';
 import './layouts.css';
 import { login } from "../../apicalls/auth";
@@ -31,18 +30,17 @@ export default function Login() {
         token ?
             <Home /> :
             <>
-                <Button className="loginBtn" text='Login'></Button>
                 <div className="login">
                     <div className="formDiv">
                         <h2>Login</h2>
                         <div>
                             <form action="/" onSubmit={handleLogin} className="loginForm">
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="username">Usuário</label>
                                 <input required={true} placeholder="username" name="username" type="text" onChange={ev => setUsername(ev.target.value)} />
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">Senha</label>
                                 <input required={true} placeholder="password" name="password" type="password" onChange={ev => setPassword(ev.target.value)} />
                                 {error && <p className="errorMessage">{message}</p>}
-                                <button type="submit" className="sendBtn">Login</button>
+                                <button type="submit" className="sendBtn">Entrar</button>
                             </form>
                         </div>
                     </div>

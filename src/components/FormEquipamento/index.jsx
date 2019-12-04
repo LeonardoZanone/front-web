@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
 import { create } from '../../apicalls/Equipamento';
 
-export default function FormEquipamento() {
+export default function FormEquipamento({ preEquipamento }) {
 
     const [equipamento, setEquipamento] = useState({
         ServiceTag: '',
+        PropertyNumber: '',
         Description: '',
-        Status: 'Available',
+        Status: '',
         Type: ''
     });
+
+    useEffect(() => {
+        if (preEquipamento && preEquipamento !== {}) {
+            setEquipamento(preEquipamento);
+        }
+    }, [preEquipamento]);
 
     function handleChange(e) {
         e.preventDefault();
@@ -31,15 +38,19 @@ export default function FormEquipamento() {
             <form className="pure-form pure-form-aligned" onSubmit={criarEquipamento}>
                 <div className="pure-control-group">
                     <label htmlFor="ServiceTag">Service Tag</label>
-                    <input id="ServiceTag" onChange={handleChange} type="text" name="ServiceTag" />
+                    <input id="ServiceTag" defaultValue={equipamento.ServiceTag} onChange={handleChange} type="text" name="ServiceTag" />
+                </div>
+                <div className="pure-control-group">
+                    <label htmlFor="PropertyNumber">Número de Patrimonio</label>
+                    <input id="PropertyNumber" defaultValue={equipamento.PropertyNumber} onChange={handleChange} type="text" name="PropertyNumber" />
                 </div>
                 <div className="pure-control-group">
                     <label htmlFor="Description">Descrição</label>
-                    <input id="Description" onChange={handleChange} type="text" name="Description" />
+                    <input id="Description" defaultValue={equipamento.Description} onChange={handleChange} type="text" name="Description" />
                 </div>
                 <div className="pure-control-group">
                     <label htmlFor="Type">Tipo</label>
-                    <input id="Type" onChange={handleChange} type="text" name="Type" />
+                    <input id="Type" defaultValue={equipamento.Type} onChange={handleChange} type="text" name="Type" />
                 </div>
                 <div className="pure-control-group">
                     <label></label>

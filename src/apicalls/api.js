@@ -1,6 +1,8 @@
-import React from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ConnectionError from '../pages/ConnectionError/index';
+import Routes from '../routes/router';
 
 const api = axios.create({
     baseURL: 'http://localhost:5000/api/',
@@ -21,12 +23,17 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use((response) => {
     return response;
 }, (error) => {
-
-    if (error.response.status === 401) {
-        localStorage.setItem('token', null);
-        return <Redirect to='login'></Redirect>
-        // remover token, redirecionar para login...
+    if (error.response && error.response.status === 401) {
+        localStorage.setItem('token', '');
+        ReactDOM.render(<Routes />, document.getElementById('root'));
+        // eslint-disable-next-line no-throw-literal
+        throw {};
     }
+    else {
+        ReactDOM.render(<ConnectionError />, document.getElementById('root'));
+    }
+    // eslint-disable-next-line no-throw-literal
+    throw {};
 })
 
 export default api;

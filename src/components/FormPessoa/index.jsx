@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
-import { create } from '../../apicalls/Person'
+import { create, edit, checkEmail } from '../../apicalls/Person';
+import ConfirmarPessoa from '../ConfirmarPessoa/index';
 
 export default function FormPessoa({ prePerson }) {
 
@@ -12,6 +13,11 @@ export default function FormPessoa({ prePerson }) {
         RG: '',
         Telephone: ''
     });
+    const [hidden, setHidden] = useState('');
+
+    useEffect(() => {
+        setHidden('hidden');
+    }, [])
 
     useEffect(() => {
         if (prePerson)
@@ -19,11 +25,40 @@ export default function FormPessoa({ prePerson }) {
     }, [prePerson, person])
 
 
-    async function salvarPessoa(e) {
+    function salvarPessoa(e) {
         e.preventDefault();
-        console.log(person);
+        if (!prePerson) {
+            checkemail();
+        }
+        else {
+            sendRequest();
+        }
+    }
+
+    async function sendRequest() {
         const response = await create(person);
         alert(response.data.Message);
+    }
+
+    async function sendEditRequest() {
+        const response = await edit(person);
+        alert(response.data.Message);
+    }
+
+    async function checkemail() {
+        const response = await checkEmail(person.Email);
+        if (response && response.data) {
+            if (!response.data.Content && response.data.Status === 0) {
+                setHidden('');
+            }
+            else if (!response.data.Content) {
+                sendRequest();
+            }
+            else {
+                setHidden('hidden');
+                sendEditRequest(person);
+            }
+        }
     }
 
     function handleChange(ev) {
@@ -32,8 +67,16 @@ export default function FormPessoa({ prePerson }) {
         setPerson(person);
     }
 
+    const confirmCallback = (decision) => {
+        if (decision) {
+
+        }
+        setHidden('hidden');
+    }
+
     return (
         <div className="pure-form pure-form-aligned">
+            <ConfirmarPessoa callback={confirmCallback} className={hidden} />
             <form className="pure-form pure-form-aligned" onSubmit={salvarPessoa}>
                 <div className="pure-control-group">
                     <label htmlFor="Name">Nome</label>

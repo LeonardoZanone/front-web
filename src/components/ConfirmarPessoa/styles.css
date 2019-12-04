@@ -1,0 +1,40 @@
+.confirm-pessoa {
+    position: absolute;
+    background-color: white;
+    padding: 100px;
+    border: lightgray solid;
+    border-radius: 50px;
+    z-index: 3;
+    font-weight: bold;
+}
+
+.confirm-pessoa .buttons {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding-top: 80px;
+}
+
+.confirm-pessoa .buttons .button {
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.confirm-pessoa .buttons .button-yes {
+    background-color: #00ca3b;
+}
+
+.confirm-pessoa .buttons .button-yes:hover {
+    background-color: #14b944;
+}
+
+.confirm-pessoa .buttons .button-no {
+    background-color: #e71b22;
+}
+
+.confirm-pessoa .buttons .button-no:hover {
+    background-color: #ce1e24;
+}

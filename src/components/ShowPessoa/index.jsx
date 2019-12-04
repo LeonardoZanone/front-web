@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.css';
 import '../../css/pure-min.css';
 import '../../css/side-menu.css';
@@ -27,11 +27,11 @@ export default function ShowPessoa() {
             setPessoas(response.data.Content);
         }
         fetchData();
-    }, [Delete]);
+    }, [selected]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     async function Delete() {
         await deleta(selected);
+        setSelected(0);
     }
 
     function handleDelete(ev, id) {

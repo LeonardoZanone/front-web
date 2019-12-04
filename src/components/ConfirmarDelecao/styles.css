@@ -20,21 +20,4 @@
     margin: 20px;
     border: none;
     border-radius: 5px;
-    color: white;
-}
-
-.confirm-delete .buttons .button-yes {
-    background-color: #00ca3b;
-}
-
-.confirm-delete .buttons .button-yes:hover {
-    background-color: #14b944;
-}
-
-.confirm-delete .buttons .button-no {
-    background-color: #e71b22;
-}
-
-.confirm-delete .buttons .button-no:hover {
-    background-color: #ce1e24;
 }
